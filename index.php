@@ -1,47 +1,19 @@
 <?php
 
+$db = require_once('bootstrap.php');
+
+$tasks = $db->selectAll('tasks');
+
+require_once('index.view.php');
+
+//Connections above
 
 //An instance of a class is an object
-class Task { //class
 
-    public $description; 
-    public $is_completed = false;
+// $tasks = [
+//    new Task('Tähtis ülesanne 1'), //0, object
+//    new Task('Maiju tööd'), //1
+//    new Task('Tähtis ülesanne 2'), //2 
+//];
 
-    public function __construct($description) //Märgib ära, et Taski sees on kirjeldus ja 0. Lühem variant descriptionist ja is completedist võib siin olla ka nt. desc ja completed - erinevad muutujad kaitstud muutujatest
-    {
-        $this->description = $description;
-    }
-
-    public function complete()
-    {
-        $this->is_completed = true;
-    }
-
-    public function isComplete()
-    {
-        return $this->is_completed;
-    }
-
-}
-
-//$task - variable
-
-$tasks = [
-    new Task('Täida lahter'), //0, object
-    new Task('Pese hambaid'), //1
-    new Task('Õpilasesinduse protokoll'), //2
-];
-
-$tasks[0]->complete();
-
-require 'index.view.php';
-
-//var_dump(tasks);
-
-//$task = new Task('Go to the store'); //object
-
-//var_dump($task->isComplete());
-
-//$task->complete();
-
-//var_dump($task->isComplete());
+// $tasks[0]->complete();var_dump($task->isComplete());
