@@ -1,10 +1,21 @@
 <?php
 
-$db = require_once('bootstrap.php');
+require_once('vendor/autoload.php');
+require_once('core/bootstrap.php');
 
-$tasks = $db->selectAll('tasks');
+// $router = new Router;
 
-require_once('index.view.php');
+//require_once('routes.php');
+
+
+//require_once($router->direct($uri));
+
+
+
+require_once Router::load('routes.php')
+    ->direct(Request::uri(), Request::method());
+
+//Try "var masterpiece" chrome extension
 
 //Connections above
 
